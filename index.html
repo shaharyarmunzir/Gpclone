@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Gpay</title>
+  <link rel="icon" type="image/x-icon" href="Google_Pay_2018_icon.svg">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    /* Mobile centered phone look */
+    :root{
+      --bg:#0b1020; /* overall dark background */
+      --card:#0f1724;
+      --muted:#9aa3b2;
+      --blue:#0b5ed7;
+      --accent:#10b981;
+    }
+    html,body{
+      height:100%;
+      width: 100%;
+      background:linear-gradient(180deg,var(--bg),#071025);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:18px;
+    }
+
+    /* phone container */
+    /* .phone {
+      max-width:420px;
+      margin:0 auto;
+    } */
+.phone {
+    width: 356px;
+    /* margin: 0 auto; */
+    margin-left: -35px;
+}
+    .app {
+      background: transparent;
+      border-radius:16px;
+      overflow:hidden;
+      min-height:720px;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .screen {
+      background: linear-gradient(180deg,#071225 0%, #07111a 100%);
+      border-radius:16px;
+      /* padding:14px; */
+      color: #e6eef8;
+      box-shadow: 0 10px 40px rgba(2,6,23,0.6);
+      /* min-height:60px; */
+      /* position:relative; */
+      width: 100%;
+    }
+
+    /* search bar */
+    .search {
+      display:flex; gap:10px; align-items:center;
+      margin-bottom:12px;
+    }
+    .search .input {
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.04);
+      padding:10px 12px;
+      border-radius:999px;
+      flex:1;
+      display:flex; gap:10px; align-items:center;
+      font-size:15px; color:#dbe9ff;
+    }
+    .search input{ background:transparent; border:0; outline:none; color:inherit; }
+    .search .avatar {
+      width:36px; height:36px; border-radius:50%; background:#7c5a47; display:flex; align-items:center; justify-content:center; font-weight:700; color:#fff;
+    }
+
+    /* promo banner */
+    .promo {
+      background: linear-gradient(90deg,#111827 10%, rgba(255,255,255,0.02) 100%);
+      border-radius:12px;
+      padding:14px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-bottom:14px;
+      position:relative;
+      overflow:hidden;
+    }
+    .promo .text { flex:1; }
+    .promo h4{ margin:0; font-size:18px; font-weight:700; color:#fff; }
+    .promo p{ margin:4px 0 0 0; color:var(--muted); font-size:13px }
+    .promo .illu { width:110px; height:70px; border-radius:10px; background:linear-gradient(135deg,#11343f,#12323f); display:flex; align-items:center; justify-content:center; color:#fff; font-size:12px; }
+
+    /* actions grid */
+    .actions {
+      display:flex; gap:12px; margin-bottom:14px;
+      flex-wrap:nowrap;
+    }
+    .action {
+      flex:1;
+      background:linear-gradient(180deg,#083a8a,#0b63ff);
+      border-radius:12px;
+      padding:12px;
+      text-align:center; cursor:pointer;
+      box-shadow:0 6px 18px rgba(11,76,166,0.18);
+      min-width:64px;
+    }
+    .action i { font-size:22px; display:block; margin-bottom:6px; color:#fff; }
+    .action .label{ font-size:13px; color:#fff; line-height:1.1; }
+
+    /* UPI lite pill row */
+    .pill-row { display:flex; gap:10px; align-items:center; margin:6px 0 12px 0; }
+    .pill {
+      background: rgba(255,255,255,0.03);
+      border:1px dashed rgba(255, 255, 255, 0.883);
+      padding:8px 12px;
+      border-radius:12px;
+      font-size:13px;
+      color:white;
+      display:flex; gap:8px; align-items:center;
+      cursor:pointer;
+    }
+    .upi-id {
+      background: rgba(255, 255, 255, 0.097);
+      padding:8px 12px;
+      border-radius:12px;
+      color:white;
+      font-size:13px;
+      flex:1;
+      display:flex; align-items:center; justify-content:center;
+    }
+
+    /* People horizontal scroll */
+    .people {
+      margin-top:8px;
+      overflow-x:auto;
+      padding-bottom:6px;
+      display:flex; gap:12px;
+      -webkit-overflow-scrolling:touch;
+    }
+    .person {
+      flex:0 0 auto;
+      width:64px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:6px;
+      text-align:center;
+      cursor:pointer;
+    }
+    .person .avatar {
+      width:56px; height:56px; border-radius:50%; background:#2b3746; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:18px;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+    }
+    .person .name { font-size:12px; color:var(--muted); width:64px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+    /* bottom nav */
+    .bottom {
+      position:fixed; left:50%; transform:translateX(-50%);
+      bottom:20px; width:100%; max-width:420px; padding:0 18px; pointer-events:none;
+    }
+    .bottom-inner {
+      background:rgba(10,12,20,0.85);
+      border-radius:28px; padding:8px 12px; display:flex; justify-content:space-around; gap:8px; align-items:center;
+      box-shadow: 0 12px 28px rgba(2,6,23,0.7); pointer-events:auto;
+    }
+    .nav-item { text-align:center; color:var(--muted); font-size:13px; cursor:pointer; width:72px; padding:6px 4px; border-radius:10px; }
+    .nav-item.active { background:linear-gradient(90deg,#0b1630,#08203a); color:#fff; font-weight:700; }
+
+    /* small screens */
+    @media (max-width:420px){
+      .screen{min-height:760px}
+    }
+    a{
+        text-decoration: none;
+        color: white;
+    }
+     .bottom-nav {
+    background-color: #1c1c1c;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 0;
+  }
+  .bottom-nav a {
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    text-decoration: none;
+  }
+  .bottom-nav .active {
+    color: #03dac6;
+  }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <div class="app">
+      <div class="screen">
+
+        <!-- SEARCH BAR -->
+        <div class="search">
+          <div class="input" id="searchBox" role="search" onclick="focusSearch()">
+            <i class="bi bi-search" style="opacity:.9"></i>
+            <input id="searchInput" placeholder="Pay anyone on UPI" />
+          </div>
+          <div class="avatar" id="profileInitial"><a href="balenceclick.html">S</a></div>
+        </div>
+
+        <!-- PROMO BANNER -->
+        <div class="promo">
+          <div class="text">
+            <h4>Recharge for min. ₹149</h4>
+            <p>Get cashback on Amazon Prime or JioHotstar gift card</p>
+            <div style="margin-top:8px;"><button class="btn btn-sm btn-outline-light" id="promoBtn">Recharge now →</button></div>
+          </div>
+          <br>
+          <br>
+          <div class="illu center">
+            <!-- simple illustration placeholder -->
+            <svg width="78" height="54" viewBox="0 0 78 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="0" width="78" height="54" rx="8" fill="#0f1724"/>
+              <circle cx="38" cy="20" r="12" fill="#0b63ff"/>
+              <rect x="10" y="36" width="58" height="8" rx="4" fill="#0b63ff"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="actions">
+            <a href="Scanner.html">
+          <div class="action" style="">
+            <!-- <i class="bi bi-qr-code-scan"></i> -->
+            <img src="qr-scan.png" alt="">
+            <div class="label">Scan any<br>QR code</div>
+          </div></a>
+          <div class="action" onclick="actionClick('pay')" style="width: 20px;">
+          <img src="rupee.png" alt="">
+            <div class="label">Pay<br>anyone</div>
+          </div>
+          <div class="action" onclick="actionClick('bank')">
+<img src="bank.png" alt="">            
+<div class="label">Bank<br>transfer</div>
+          </div>
+          <div class="action" onclick="actionClick('recharge')">
+<img src="mobile.png" alt="">
+            <div class="label">Mobile<br>recharge</div>
+          </div>
+        </div>
+
+        <!-- UPI Lite + UPI ID row -->
+        <div class="pill-row">
+          <div class="pill" onclick="alert('Activate UPI Lite - demo')"><i class="bi bi-plus-circle"></i> Activate UPI Lite</div>
+          <div class="upi-id">UPI ID: <strong style="margin-left:8px">syedshaharyar@oksbi</strong></div>
+        </div>
+
+        <!-- People section title -->
+        <div style="margin-top:14px; display:flex; align-items:center; justify-content:space-between;">
+
+          <div style="font-size:23px;color: white; font-weight:700;">People</div>
+          <div style="color:var(--muted); font-size:13px; cursor:pointer" onclick="alert('More people')">More</div>
+        </div>
+
+        <!-- People horizontal list -->
+        <div class="people mt-3" id="peopleRow">
+          <!-- people inserted by JS -->
+        </div>
+
+        <!-- spacer so content doesn't hide under bottom nav -->
+        <div style="height:150px"></div>
+      </div>
+      
+    </div>
+
+    <!-- bottom nav
+    <div class="bottom">
+      <div class="bottom-inner">
+        <div class="nav-item active" onclick="navClick(this,'home')">
+          <div><i class="bi bi-house-door-fill" style="font-size:18px"></i></div>
+          <div>Home</div>
+        </div>
+        <div class="nav-item" onclick="navClick(this,'money')">
+          <div><i class="bi bi-currency-rupee" style="font-size:18px"></i></div>
+          <div>Money</div>
+        </div>
+        <div class="nav-item" >
+          <div><i class="bi bi-person-circle" style="font-size:18px"></i></div>
+          <div><a href="balenceclick.html">You</a> </div>
+        </div>
+      </div>
+    </div> -->
+    <style>
+      #im img{
+width: 100%;
+margin-top: -250px;
+      }
+    </style>
+    <div id="im">
+        <img src="WhatsApp Image 2025-08-11 at 19.03.56_7ed46ad8.jpg" alt="">
+      </div>
+    <div class="bottom-nav">
+  <a href="index.html"><img src="https://img.icons8.com/ios-filled/20/ffffff/home.png"/><br>Home</a>
+  <a href="#"><img src="https://img.icons8.com/ios-filled/20/ffffff/rupee.png"/><br>Money</a>
+  <a href="balenceclick.html" class="active"><img src="https://img.icons8.com/ios-filled/20/ffffff/user.png"/><br>You</a>
+</div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Demo people data
+    const people = [
+      {name:'RUKHSAN', avatar:'R', color:'#7c3aed'},
+      {name:'77_Shaharyar', avatar:'S', color:'#ef1142'},
+      {name:'ASGAR ALI', avatar:'A', color:'#ef4444'},
+      {name:'Shaharyar', avatar:'S', color:'#a78bfa'},
+      {name:'munzir ha', avatar:'M', color:'#8b5cf6'},
+      {name:'ATIQUDDIN', avatar:'A', color:'#065f46'},
+      {name:'Syed R', avatar:'S', color:'#8b5cf6'},
+    ];
+
+    const peopleRow = document.getElementById('peopleRow');
+
+    function renderPeople(){
+      people.forEach(p=>{
+        const box = document.createElement('div');
+        box.className = 'person';
+        const av = document.createElement('div');
+        av.className = 'avatar';
+        if(p.img){
+          av.style.background = 'transparent';
+          av.style.boxShadow = 'none';
+          av.innerHTML = `<img src="${p.img}" style="width:56px;height:56px;border-radius:50%;">`;
+        } else {
+          av.style.background = p.color || '#2b3746';
+          av.textContent = p.avatar || p.name.charAt(0);
+        }
+        const name = document.createElement('div');
+        name.className = 'name';
+        name.textContent = p.name;
+        box.appendChild(av);
+        box.appendChild(name);
+        box.onclick = ()=> { alert('Open chat/pay to '+p.name) };
+        peopleRow.appendChild(box);
+      })
+    }
+
+    renderPeople();
+
+    // action clicks
+    function actionClick(type){
+      switch(type){
+        case 'scan': alert('Open scanner (demo)'); break;
+        case 'pay': alert('Open pay flow (demo)'); break;
+        case 'bank': alert('Bank transfer (demo)'); break;
+        case 'recharge': alert('Open recharge (demo)'); break;
+      }
+    }
+
+    // bottom nav simulate active state
+    function navClick(el, name){
+      document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+      el.classList.add('active');
+      alert('Navigate to: '+name+' (demo)');
+    }
+
+    function focusSearch(){ document.getElementById('searchInput').focus(); }
+
+    // small keyboard nav for testing on desktop
+    document.addEventListener('keydown', (e)=>{
+      if(e.key==='h') navClick(document.querySelector('.nav-item'), 'home');
+    })
+  </script>
+</body>
+</html>

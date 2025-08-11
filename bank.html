@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gpay</title>
+  <link rel="icon" type="image/x-icon" href="Google_Pay_2018_icon.svg">  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+      padding-bottom: 40px;
+      font-weight: bold;
+    }
+
+    h5 {
+      font-weight: bold;
+    }
+
+    .method-card {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      /* border: 1px dashed #888; */
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    .method-card img {
+      width: 90px;
+      height: 55px;
+      margin-right: 12px;
+      border-radius: 5px;
+      border: 2px dashed #90caff;
+    }
+
+    .method-card .text {
+      flex: 1;
+    }
+
+    .method-card .text small {
+      color: #aaa;
+    }
+
+    .section-title {
+      color: #ccc;
+      font-size: 14px;
+      margin: 20px 0 10px;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+     .topbar {
+      display: flex;
+      align-items: center;
+      gap: 0px;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="topbar">
+      <div class="back" style="font-size: 2rem; font-weight: bold;" onclick="history.back()">←</div>
+      <div style="flex:1"></div>
+      <div style="opacity:.6;font-size: 1.7rem; font-weight: bold;">⋮</div>
+    </div>
+  <div class="container mt-3">
+
+    <h1 style="margin-top: 0px;">Payment methods</h1>
+
+    <div class="section-title" style="font-size: 1.1rem; color: white;">UPI payments</div>
+    <a href="bankdetail.html">
+      <div class="method-card" style="border:none;">
+        <img src="sbi.png" style="border:none; " alt="SBI">
+        <div class="text">
+          <div>State Bank of India 2185</div>
+          <small style="color: white;">Savings account <br> Primary</small>
+        </div>
+      </div>
+    </a>
+    <div class="method-card">
+      <img src="b.jpg" alt="Bank">
+      <div class="text" style="color: #90caff; font-size: 1.1rem;">Add bank account</div>
+    </div>
+
+    <div class="method-card">
+      <img src="c.jpg" alt="UPI Lite">
+      <div class="text" style="color: #90caff; font-size: 1.1rem;">
+        <div>Set up UPI Lite</div>
+        <small style="color: white;">Pay PIN-free under ₹1000</small>
+      </div>
+    </div>
+
+    <div class="method-card">
+      <img src="rupay-logo-iconl.png" alt="RuPay">
+      <div class="text" style="color: #90caff; font-size: 1.1rem;">Add RuPay credit card on UPI</div>
+    </div>
+
+    <div class="method-card">
+      <img src="upi.jpg" alt="Credit Line">
+      <div class="text">
+        <div style="color: #90caff; font-size: 1.1rem;">Add credit line</div>
+        <small style="color: white;">Pay with a pre-sanctioned credit line</small>
+      </div>
+    </div>
+
+    <div class="section-title" style="font-size: 1.1rem; color: white;">Other ways to pay</div>
+
+    <div class="method-card">
+      <img src="card.jpg" alt="Card">
+      <div class="text">
+        <div style="color: #90caff; font-size: 1.1rem;">Add credit or debit cards</div>
+        <small style="color: white;">Bills, online shopping, and more</small>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

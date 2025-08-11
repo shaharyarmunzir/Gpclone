@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gpay</title>
+  <link rel="icon" type="image/x-icon" href="Google_Pay_2018_icon.svg"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  body {
+    background-color: #000;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    padding-bottom: 60px;
+  }
+  .bank-card {
+    display: flex;
+    align-items: center;
+    background-color: #111;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+  .bank-card img {
+    width: 80px;
+    height: 50px;
+    margin-right: 12px;
+    border-radius: 8px;
+    background-color: white;
+    padding: 5px;
+  }
+  .account-info {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #ccc;
+  }
+  .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+  }
+  .menu-item i {
+    font-size: 20px;
+    margin-right: 15px;
+  }
+  .upi-logo {
+    text-align: center;
+    margin-top: 30px;
+  }
+  .upi-logo img {
+    width: 80px;
+    opacity: 0.7;
+  }
+  a{
+    text-decoration: none;
+    color: white;
+  }
+  .menu-item{
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  .topbar {
+      display: flex;
+      align-items: center;
+      gap: 0px;
+      margin-bottom: 8px;
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="topbar">
+      <div class="back" style="font-size: 1.5rem;" onclick="history.back()">X</div>
+      <div style="flex:1"></div>
+      <div style="opacity:.6;font-size: 1.7rem; font-weight: bold;">⋮</div>
+    </div>
+<div class="container mt-3">
+
+  <h3 style="text-align: center; ">Payment method details</h3>
+
+  <div class="bank-card">
+    <img src="sbi.png" alt="SBI">
+    <div>
+      <div><strong>State Bank of India 2185</strong></div>
+      <div style="font-size: 13px; color: white; font-weight: bold; " >Savings account <br> Primary</div>
+    </div>
+  </div>
+<br>
+  <div class="account-info" style="font-size: 1.rem; font-weight: bold;">
+    <strong style="font-size: 1.1rem;">Account information</strong><br>
+    SHAHARYAR HASMII<br>
+    +91 74789 81189
+  </div>
+<br>
+<hr>
+  <div class="menu-item" >
+    <i class="fas fa-university" style="color:#90caff;"></i> Manage UPI IDs
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-u" style="color:#90caff;"></i> Manage UPI numbers
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-globe" style="color:#90caff;"></i> Manage international payments
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-qrcode" style="color:#90caff;"></i> Display QR code
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-question-circle" style="color:#90caff;"></i> Forgot UPI PIN
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-wallet" style="color:#90caff;"></i><a href="password.html">Check balance</a> 
+  </div>
+<br><br>
+  <div class="upi-logo">
+    <img src="up.jpg" alt="UPI">
+  </div>
+
+</div>
+
+</body>
+</html>
